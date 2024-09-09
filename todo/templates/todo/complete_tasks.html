@@ -1,24 +1,26 @@
 {% extends 'todo/base.html' %}
 
-
-
 {% block content %}
-<h1>Завершеные задачи</h1>
-<ul>
-    {% for todo in todos %}
-    <li>
-        <a href="{% url 'todoread'  todo.id  %}">
-        {% if todo.important %}<b>{% endif %}
-        {{ todo.title }}
-        {% if todo.important %}
-    </b>{% endif %}
-
-    {% if todo.content %} - {{ todo.content }}
-        {% endif %}
-            {{ todo.time_done|date:'M j Y H:i' }}
+<div class="container mt-4">
+    <h1 class="mb-4">Завершенные задачи</h1>
+    <div class="list-group">
+        {% for todo in todos %}
+        <a href="{% url 'todoread' todo.id %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                    {% if todo.important %}
+                    <strong>{{ todo.title }}</strong>
+                    {% else %}
+                    {{ todo.title }}
+                    {% endif %}
+                </h5>
+                <small>{{ todo.time_done|date:'M j Y H:i' }}</small>
+            </div>
+            {% if todo.content %}
+            <p class="mb-1">{{ todo.content }}</p>
+            {% endif %}
         </a>
-    </li>
-    {% endfor %}
-</ul>
-
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

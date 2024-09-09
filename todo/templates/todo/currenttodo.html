@@ -1,23 +1,28 @@
 {% extends 'todo/base.html' %}
 
-
-
 {% block content %}
-Current
-<ul>
-    {% for todo in todos %}
-    <li>
-        <a href="{% url 'todoread'  todo.id  %}">
-        {% if todo.important %}<b>{% endif %}
-        {{ todo.title }}
-        {% if todo.important %}
-    </b>{% endif %}
-
-    {% if todo.content %} - {{ todo.content }}
-        {% endif %}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-
+<div class="container mt-4">
+    <h2 class="mb-3">Current Tasks</h2>
+    <ul class="list-group">
+        {% for todo in todos %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <a href="{% url 'todoread' todo.id %}" class="text-decoration-none text-dark">
+                    {% if todo.important %}
+                        <strong><span class="text-danger">{{ todo.title }}</span></strong>
+                    {% else %}
+                        {{ todo.title }}
+                    {% endif %}
+                    {% if todo.content %}
+                        - <span class="text-muted">{{ todo.content }}</span>
+                    {% endif %}
+                </a>
+            </div>
+            {% if todo.important %}
+            <span class="badge bg-danger rounded-pill">Important</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
