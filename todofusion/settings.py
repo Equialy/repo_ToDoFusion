@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y)mvrs(7_apx^dbqvg&ya2)1jtto0%l7&4ouh(6pmbx^+pau#^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['LeoQuark.pythonanywhere.com']
 
 
 # Application definition
@@ -128,3 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = '/login'
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like ni local file. It's production")
