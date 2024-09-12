@@ -1,0 +1,9 @@
+<ul class="list-group">
+    {% for cat in cats %}
+        <li class="list-group-item {% if cat.pk == cat_selected %}{% endif %}">
+            <a href="{% url 'category_name' cat.slug %}">
+                {{ cat.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

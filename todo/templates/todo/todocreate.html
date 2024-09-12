@@ -29,6 +29,11 @@
                             {{ form.important|add_class:"form-check-input" }}
                             <label class="form-check-label" for="id_important">Важно 💡</label>
                         </div>
+                        <div class="mb-3 form-floating" >
+                            {{ form.category|add_class:"form-select" }}
+                            <label for="id_category" >Категория ️</label>
+                            <option value="" selected disabled hidden>Выберите категорию</option>
+                        </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success btn-lg">Создать</button>
                         </div>

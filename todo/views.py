@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from .forms import ToDoForm
-from .models import Todo
+from .models import Todo, Categories
 
 
 # Create your views here.
@@ -46,12 +46,6 @@ def loginuser(request):
         else:
             login(request, user)
             return redirect('currenttodo')
-
-
-@login_required
-def currenttodo(request):
-    todos = Todo.objects.filter(user=request.user, time_done__isnull=True)
-    return render(request, 'todo/currenttodo.html', {'todos': todos})
 
 
 @login_required
@@ -98,8 +92,10 @@ def logoutuser(request):
         logout(request)
         return redirect('home')
 
+
 @login_required
 def todocreate(request):
+    """Создание заметки"""
     if request.method == 'GET':
         return render(request, 'todo/todocreate.html', {'form': ToDoForm()})
     else:
@@ -113,4 +109,31 @@ def todocreate(request):
             else:
                 return (request, 'todo/todocreate.html', {'form': form})
         except ValueError:
-            return render(request, 'todo/todocreate.html', {'form': ToDoForm(), 'error': 'Wrong data input'})
+            return render(request, 'todo/todocreate.html', {'form': ToDoForm(), 'error': 'Неверные данные'})
+
+
+@login_required
+def currenttodo(request):
+    """При нажатии на вкладку Текущие задачи выбираются все заметки пользователя
+    независимо от категории"""
+    todos = Todo.objects.filter(user=request.user, time_done__isnull=True)
+    notes = Todo.objects.filter(user=request.user)
+
+    data = {
+        'todos': todos,
+        'notes': notes
+    }
+    return render(request, 'todo/currenttodo.html', data)
+
+@login_required
+def category_name(request, category_slug):
+    """После выбора категории по слагу отрабатывает это представление
+    в зависимости от категории и указывается выбранная категория"""
+    category = get_object_or_404(Categories, slug=category_slug)
+    notes = Todo.objects.filter(category=category, user=request.user)
+    data = {
+        'tasks': category,
+        'notes': notes,
+        'cat_selected': category.pk,
+    }
+    return render(request, 'todo/currenttodo.html', data)

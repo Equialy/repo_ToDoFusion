@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from todo import views
 
 urlpatterns = [
@@ -17,4 +17,5 @@ urlpatterns = [
     path('todoread/<int:todo_pk>/', views.todoread, name='todoread'),
     path('todoread/<int:todo_pk>/done/', views.tododone, name='tododone'),
     path('todoread/<int:todo_pk>/delete/', views.tododelete, name='totoddelete'),
+    path('', include('todo.urls')),
 ]

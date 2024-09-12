@@ -55,3 +55,8 @@ form.d-inline {
     font-size: 1.2rem;
     color: #666;
 }
+.category-link.active {
+    color: #007bff; /* Цвет текста для активной категории */
+    background-color: #e9ecef; /* Мягкий серый фон для активной категории */
+    border-radius: 5px; /* Мягкие углы для активной категории */
+}
