@@ -1,6 +1,19 @@
-{% extends 'todo/base.html' %}
+{% extends 'base.html' %}
 
 
 {% block content %}
-Home
+<div class="bg-white rounded shadow-sm p-4">
+        {% if user.is_authenticated %}
+        <div class="greeting">
+            <h2>Добро пожаловать, {{ user.username }}!</h2>
+            <p>Здесь вы можете создавать и управлять своими заметками.</p>
+        </div>
+        {% else %}
+        <div class="greeting">
+            <h2>Добро пожаловать в Note Taking App!</h2>
+            <p>Пожалуйста, войдите или зарегистрируйтесь, чтобы начать использовать приложение.</p>
+        </div>
+        {% endif %}
+
+    </div>
 {% endblock %}

@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.note-form .form-control {
+    padding: 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    border-radius: 0;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.note-form .form-control:focus {
+    border-bottom: 2px solid #28a745;
+    background-color: white;
+}
+
+h1 {
+    color: #333;
+    font-family: 'Georgia', serif;
+}
+
+button.btn {
+    background-color: #28a745;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button.btn:hover {
+    background-color: #218838;
+}
+textarea.form-control {
+    height: 300px;  /* высота в пикселях */
+    width: 100%;    /* ширина растягивается на всю доступную область */
+}

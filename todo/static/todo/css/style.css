@@ -1,0 +1,57 @@
+/* Общие стили для страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Стили для навигационной панели */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+}
+
+/* Стили для контейнера */
+.container {
+    max-width: 800px;
+}
+
+.bg-white.rounded.shadow-sm {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для кнопок */
+.btn-primary, .btn-outline-primary, .btn-danger {
+    font-size: 1rem;
+}
+
+/* Стили для формы выхода */
+form.d-inline {
+    margin-left: 10px;
+}
+
+/* Стили для блока приветствия */
+.greeting {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.greeting h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.greeting p {
+    font-size: 1.2rem;
+    color: #666;
+}
